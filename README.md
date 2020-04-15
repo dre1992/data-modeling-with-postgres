@@ -25,6 +25,8 @@ For the database the decision was made to create 5 tables with 1 fact table (son
 #### Songplays
 This is the entrypoint for all the potential analytical queries. The decision for the table was to use a serial auto incrementing id for the primary key. 
 The table references other tables via song_id and artist_id but the decision here was not to create any foreign key constrains as the lack of data here would mean only very few entries would be created.
+NON NULL value types were selected for the start_time and user_id, song_id and artist_id were left as text with the ability to use null values
+as the information might be missing
 As for the primary key its known that serial creates gaps when the transaction is rolled back due some error but it was used simplicity .
 For the type of values I went with int and text in most cases of numbers and strings apart for some cases that bigint was used (start_time) and varchars (if the options of level are limited we could use something like varchar(5), if only paid and free are the valid values)
 
